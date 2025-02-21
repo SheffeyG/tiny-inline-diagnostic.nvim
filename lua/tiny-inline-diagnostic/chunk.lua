@@ -182,15 +182,15 @@ end
 ---@param diagnostic_line number: The line number of the diagnostic message.
 ---@param ret table: The return table containing diagnostic information.
 ---@return table: A table representing the virtual text array for the arrow.
-function M.get_arrow_from_chunk(opts, diagnostic_line, ret)
+function M.get_arrow_from_chunk(opts, diagnostic_line, ret, diag_inv_hi)
 	local arrow = opts.signs.arrow
 	local need_to_be_under = ret.need_to_be_under
 
 	local chunk = {}
-	local hi = "TinyInlineDiagnosticVirtualTextArrow"
+	local hi = diag_inv_hi
 
 	if diagnostic_line ~= ret.line or ret.need_to_be_under then
-		hi = "TinyInlineDiagnosticVirtualTextArrowNoBg"
+		hi = diag_inv_hi
 	end
 
 	if need_to_be_under then
